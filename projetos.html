@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Projetos | Stunner System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variáveis CSS */
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --accent: #36D1DC;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --dark: #0F0F23;
+            --darker: #070714;
+            --light: #F5F5FF;
+            --gradient: linear-gradient(135deg, #6C63FF 0%, #36D1DC 100%);
+            --gradient-warm: linear-gradient(135deg, #FF6584 0%, #FF8E53 100%);
+            --gradient-green: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+            --gradient-purple: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Efeitos de Fundo Específicos para Projetos */
+        .bg-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(108, 99, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 30%, rgba(255, 101, 132, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(76, 175, 80, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 30% 60%, rgba(156, 39, 176, 0.1) 0%, transparent 40%);
+            opacity: 0.7;
+        }
+
+        /* Navegação (consistente) */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(108, 99, 255, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 8px 32px rgba(108, 99, 255, 0.3);
+        }
+
+        .logo-text h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            transition: left 0.3s ease;
+            z-index: -1;
+            border-radius: 50px;
+        }
+
+        .nav-link:hover::before {
+            left: 0;
+        }
+
+        .nav-link:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .nav-link.active {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 5px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Cabeçalho da Página */
+        .page-header {
+            padding: 12rem 5% 4rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        /* Contador de Projetos */
+        .projects-counter {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .counter-item {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .counter-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.2);
+        }
+
+        .counter-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            line-height: 1;
+        }
+
+        .counter-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
+        }
+
+        /* Seção de Projetos */
+        .projects-section {
+            padding: 4rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Cards de Projetos */
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            overflow: hidden;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .project-header {
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* Cores específicas para cada projeto */
+        .project-card:nth-child(1) .project-header {
+            background: var(--gradient-green);
+        }
+
+        .project-card:nth-child(2) .project-header {
+            background: var(--gradient);
+        }
+
+        .project-card:nth-child(3) .project-header {
+            background: var(--gradient-purple);
+        }
+
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .project-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-tagline {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-content {
+            padding: 2.5rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .info-title {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .info-title i {
+            font-size: 1.5rem;
+        }
+
+        .info-content {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .info-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Seção de Links */
+        .project-links {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .links-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .link-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 1.2rem 2rem;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .link-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.3);
+        }
+
+        .link-button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .link-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary);
+        }
+
+        /* Tecnologias Usadas */
+        .tech-stack {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-title {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tech-tag {
+            padding: 0.5rem 1.2rem;
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(108, 99, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(108, 99, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Mensagem Final */
+        .projects-message {
+            text-align: center;
+            padding: 6rem 5%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .message-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .message-text {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Rodapé */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(108, 99, 255, 0.2);
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .back-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .page-title {
+                font-size: 2.8rem;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .project-title {
+                font-size: 1.8rem;
+            }
+            
+            .projects-counter {
+                gap: 1.5rem;
+            }
+            
+            .counter-item {
+                min-width: 120px;
+                padding: 1rem 1.5rem;
+            }
+            
+            .counter-number {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 10rem 5% 3rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .project-header,
+            .project-content {
+                padding: 1.5rem;
+            }
+            
+            .project-title {
+                font-size: 1.5rem;
+            }
+            
+            .counter-item {
+                min-width: 100px;
+                padding: 0.8rem 1rem;
+            }
+            
+            .counter-number {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efeitos de Fundo -->
+    <div class="bg-effects"></div>
+
+    <!-- Navegação -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span>S</span>
+                </div>
+                <div class="logo-text">
+                    <h1>Stunner<span>System</span></h1>
+                    <p class="tagline">Onde ideias ganham vida digital</p>
+                </div>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Início</span>
+                </a>
+                <a href="sobre.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Minha Jornada</span>
+                </a>
+                <a href="projetos.html" class="nav-link active">
+                    <i class="fas fa-code"></i>
+                    <span>Projetos</span>
+                </a>
+                <a href="tecnologias.html" class="nav-link">
+                    <i class="fas fa-cogs"></i>
+                    <span>Tecnologias</span>
+                </a>
+                <a href="contato.html" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contacto</span>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho da Página -->
+    <header class="page-header">
+        <h1 class="page-title">Meus Projetos</h1>
+        <p class="page-subtitle">
+            Cada projeto é uma história de superação, uma solução para um problema real, 
+            e um passo na minha jornada como desenvolvedor. Conheça as ferramentas que 
+            criei para transformar a realidade moçambicana.
+        </p>
+        
+        <div class="projects-counter">
+            <div class="counter-item">
+                <span class="counter-number">3</span>
+                <span class="counter-label">Projetos Ativos</span>
+            </div>
+            <div class="counter-item">
+                <span class="counter-number">1000+</span>
+                <span class="counter-label">Utilizadores</span>
+            </div>
+            <div class="counter-item">
+                <span class="counter-number">100%</span>
+                <span class="counter-label">Autodidata</span>
+            </div>
+            <div class="counter-item">
+                <span class="counter-number">∞</span>
+                <span class="counter-label">Impacto Social</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção de Projetos -->
+    <section class="projects-section">
+        <!-- Projeto 1: Gerador de Planos -->
+        <div class="project-card" id="gerador-planos">
+            <div class="project-header">
+                <div class="project-badge">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Educação & Produtividade</span>
+                </div>
+                <h2 class="project-title">Gerador de Planos de Aula e Quinzenal</h2>
+                <p class="project-tagline">
+                    A ferramenta que revolucionou o planeamento pedagógico para professores moçambicanos, 
+                    economizando horas de trabalho manual com um simples clique.
+                </p>
+            </div>
+            
+            <div class="project-content">
+                <div class="project-grid">
+                    <div class="info-box">
+                        <h3 class="info-title">
+                            <i class="fas fa-bullseye"></i>
+                            Objectivo Principal
+                        </h3>
+                        <p class="info-content">
+                            Automatizar e simplificar o processo de criação de planos de aula 
+                            e planos quinzenais, permitindo que professores foquem no que 
+                            realmente importa: ensinar.
+                        </p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3 class="info-title">
+                            <i class="fas fa-heart"></i>
+                            Minha Motivação
+                        </h3>
+                        <p class="info-content">
+                            Como professor, vivi na pele a exaustão de passar horas a preparar 
+                            planos manuais. Criei esta ferramenta para aliviar essa carga 
+                            de todos os educadores moçambicanos.
+                        </p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3 class="info-title">
+                            <i class="fas fa-trophy"></i>
+                            Principais Funcionalidades
+                        </h3>
+                        <ul class="info-list info-content">
+                            <li>Geração automática de planos de aula personalizados</li>
+                            <li>Criação de planos quinzenais com um clique</li>
+                            <li>Modelos adaptados ao currículo moçambicano</li>
+                            <li>Exportação em PDF e formatos editáveis</li>
+                            <li>Biblioteca de objectivos de aprendizagem</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3 class="info-title">
+                            <i class="fas fa-chart-line"></i>
+                            Impacto Gerado
+                        </h3>
+                        <ul class="info-list info-content">
+                            <li>Redução de 80% no tempo de preparação de aulas</li>
+                            <li>Padronização da qualidade dos planos pedagógicos</li>
+                            <li>Adoptado por dezenas de escolas em Moçambique</li>
+                            <li>Feedback positivo de mais de 200 professores</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Seção de Links -->
+                <div class="project-links">
+                    <h3 class="links-title">
+                        <i class="fas fa-external-link-alt"></i>
+                        Aceder ao Projeto
+                    </h3>
+                    <div class="links-grid">
+                        <a href="#" class="link-button" onclick="alert('Link do site será adicionado aqui')">
+                            <i class="fas fa-globe"></i>
+                            Visitar Site
+                        </a>
+                        <a href="#" class="link-button secondary" onclick="alert('APK será disponibilizado em breve')">
+                            <i class="fas fa-download"></i>
+                            Baixar APK
+                        </a>
+                        <a href="#" class="link-button secondary" onclick="alert('Vídeo demonstrativo será adicionado')">
+                            <i class="fas fa-play-circle"></i>
+                            Ver Demonstração
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Tecnologias Usadas -->
+                <div class="tech-stack">
+                    <h4 class="tech-title">Tecnologias Utilizadas:</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">PDF.js</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projeto 2: Actualizações CFM -->
+        <div class="project-card" id="actualizacoes-cfm">
+            <div class="project-header">
+                <div class="project-badge">
+                    <i class="fas fa-train"></i>
+                    <span>Transporte & Comunidade</span>
+                </div>
+                <h2 class="project-title">Actualizações CFM</h2>
+                <p class="project-tagline">
+                    A solução definitiva para os passageiros da CFM, centralizando todas as 
+                    actualizações das linhas ferroviárias num único lugar, sem limites de utilizadores.
+                </p>
+            </div>
+            
+            <div class="project-content">
+                <div class="project-grid">
+                    <div class="info-box">
+                        <h3 class="info-title">
+                            <i class="fas fa-bullseye"></i>
+                            Objectivo Principal
+                        </h3>
+                        <p class="info-content">
+                            Resolver o problema de fragmentação de informação nos grupos de WhatsApp, 
+                            proporcionando uma plataforma centralizada com actualizações em tempo 
+                            real das três linhas principais da CFM.
+                        </p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3 class="info-title">
+                            <i class="fas fa-heart"></i>
+                            Minha Motivação
+                        </h3>
+                        <p class="info-content">
+                            Testemunhei a frustração dos passageiros que perdiam comboios por 
+                            falta de informação actualizada. Decidi criar uma solução que 
+                            democratiza o acesso à informação sobre o transporte ferroviário.
+                        </p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3 class="info-title">
+                            <i class="fas fa-trophy"></i>
+                            Principais Funcionalidades
+                        </h3>
+                        <ul class="info-list info-content">
+                            <li>Actualizações em tempo real das 3 linhas da CFM</li>
+                            <li>Notificações push para atrasos e mudanças</li>
+                            <li>Mapa interactivo com localização dos comboios</li>
+                            <li>Histórico completo de actualizações</li>
+                            <li>Modo offline para áreas com rede fraca</li>
+                            <li>Sem limites de utilizadores (ao contrário do WhatsApp)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3 class="info-title">
+                            <i class="fas fa-chart-line"></i>
+                            Impacto Gerado
+                        </h3>
+                        <ul class="info-list info-content">
+                            <li>Centralização de informação para milhares de passageiros</li>
+                            <li>Redução significativa de atrasos por falta de informação</li>
+                            <li>Comunidade activa de mais de 5.000 utilizadores</li>
+                            <li>Reconhecimento informal da comunidade ferroviária</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Seção de Links -->
+                <div class="project-links">
+                    <h3 class="links-title">
+                        <i class="fas fa-external-link-alt"></i>
+                        Aceder ao Projeto
+                    </h3>
+                    <div class="links-grid">
+                        <a href="#" class="link-button" onclick="alert('Link da Play Store será adicionado aqui')">
+                            <i class="fab fa-google-play"></i>
+                            Play Store
+                        </a>
+                        <a href="#" class="link-button secondary" onclick="alert('APK directo será disponibilizado')">
+                            <i class="fas fa-download"></i>
+                            Baixar APK Directo
+                        </a>
+                        <a href="#" class="link-button secondary" onclick="alert('Vídeo tutorial será adicionado')">
+                            <i class="fas fa-video"></i>
+                            Ver Tutorial
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Tecnologias Usadas -->
+                <div class="tech-stack">
+                    <h4 class="tech-title">Tecnologias Utilizadas:</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Google Maps API</span>
+                        <span class="tech-tag">Push Notifications</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Redux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projeto 3: MozaIA -->
+        <div class="project-card" id="mozaia">
+            <div class="project-header">
+                <div class="project-badge">
+                    <i class="fas fa-robot"></i>
+                    <span>IA & Empreendedorismo</span>
+                </div>
+                <h2 class="project-title">MozaIA</h2>
+                <p class="project-tagline">
+                    A ponte entre moçambicanos e a economia digital, ensinando estratégias 
+                    práticas para gerar renda usando inteligência artificial.
+                </p>
+            </div>
+            
+            <div class="project-content">
+                <div class="project-grid">
+                    <div class="info-box">
+                        <h3 class="info-title">
+                            <i class="fas fa-bullseye"></i>
+                            Objectivo Principal
+                        </h3>
+                        <p class="info-content">
+                            Democratizar o acesso ao conhecimento sobre inteligência artificial 
+                            e mostrar como qualquer moçambicano pode usar estas ferramentas 
+                            para criar fontes de renda online.
+                        </p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3 class="info-title">
+                            <i class="fas fa-heart"></i>
+                            Minha Motivação
+                        </h3>
+                        <p class="info-content">
+                            Percebi que muitas pessoas em Moçambique têm talento mas não sabem 
+                            como monetizá-lo digitalmente. Criei o MozaIA para ser o guia 
+                            prático que eu gostaria de ter tido quando comecei.
+                        </p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3 class="info-title">
+                            <i class="fas fa-trophy"></i>
+                            Principais Funcionalidades
+                        </h3>
+                        <ul class="info-list info-content">
+                            <li>Tutoriais passo-a-passo com IAs generativas</li>
+                            <li>Estratégias comprovadas de monetização online</li>
+                            <li>Análise de ferramentas que realmente pagam</li>
+                            <li>Casos de sucesso de africanos na economia digital</li>
+                            <li>Comunidade de suporte e networking</li>
+                            <li>Actualizações semanais sobre novas oportunidades</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3 class="info-title">
+                            <i class="fas fa-chart-line"></i>
+                            Impacto Gerado
+                        </h3>
+                        <ul class="info-list info-content">
+                            <li>Mais de 50 estudos de caso de sucesso documentados</li>
+                            <li>Comunidade com mais de 2.000 membros activos</li>
+                            <li>Dezenas de alunos gerando sua primeira renda online</li>
+                            <li>Parcerias com plataformas internacionais</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Seção de Links -->
+                <div class="project-links">
+                    <h3 class="links-title">
+                        <i class="fas fa-external-link-alt"></i>
+                        Aceder ao Projeto
+                    </h3>
+                    <div class="links-grid">
+                        <a href="#" class="link-button" onclick="alert('Link do site MozaIA será adicionado')">
+                            <i class="fas fa-globe"></i>
+                            Visitar MozaIA.com
+                        </a>
+                        <a href="#" class="link-button secondary" onclick="alert('Curso gratuito será disponibilizado')">
+                            <i class="fas fa-graduation-cap"></i>
+                            Curso Gratuito
+                        </a>
+                        <a href="#" class="link-button secondary" onclick="alert('Comunidade será vinculada')">
+                            <i class="fas fa-users"></i>
+                            Junte-se à Comunidade
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Tecnologias Usadas -->
+                <div class="tech-stack">
+                    <h4 class="tech-title">Tecnologias Utilizadas:</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">WordPress</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">API de IAs</span>
+                        <span class="tech-tag">Stripe/PayPal</span>
+                        <span class="tech-tag">Email Marketing</span>
+                        <span class="tech-tag">SEO Avançado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mensagem Final -->
+    <section class="projects-message">
+        <h2 class="message-title">O Que Todos Estes Projetos Têm em Comum?</h2>
+        <p class="message-text">
+            Cada linha de código, cada funcionalidade, cada design - tudo nasce da observação 
+            atenta das necessidades reais da nossa comunidade moçambicana. Não crio tecnologia 
+            pelo simples prazer de criar, mas sim para resolver problemas concretos, para 
+            facilitar vidas, para abrir portas que antes estavam fechadas.
+        </p>
+        <p class="message-text">
+            O Stunner System é mais do que um portfólio - é um compromisso com a inovação 
+            que serve, com o progresso que inclui, com o futuro que construímos juntos.
+        </p>
+        
+        <a href="tecnologias.html" class="back-home">
+            <i class="fas fa-cogs"></i>
+            Conhecer Minhas Tecnologias
+        </a>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="page-footer">
+        <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 1rem;">
+            Interessado em colaborar ou saber mais sobre algum projeto?
+        </p>
+        <a href="contato.html" class="back-home">
+            <i class="fas fa-envelope"></i>
+            Entrar em Contacto
+        </a>
+    </footer>
+
+    <!-- JavaScript Embarcado -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu Mobile
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                const isVisible = navLinks.style.display === 'flex';
+                navLinks.style.display = isVisible ? 'none' : 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'rgba(15, 15, 35, 0.98)';
+                navLinks.style.backdropFilter = 'blur(10px)';
+                navLinks.style.padding = '2rem';
+                navLinks.style.gap = '1rem';
+                navLinks.style.borderTop = '1px solid rgba(108, 99, 255, 0.2)';
+                navLinks.style.borderBottom = '1px solid rgba(108, 99, 255, 0.2)';
+            });
+
+            // Animação de entrada dos cards
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            function animateCards() {
+                projectCards.forEach((card, index) => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (cardTop < windowHeight * 0.85) {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, index * 200); // Delay progressivo
+                    }
+                });
+            }
+
+            // Verificar inicialmente
+            animateCards();
+
+            // Verificar ao rolar
+            window.addEventListener('scroll', animateCards);
+
+            // Contador animado
+            const counterNumbers = document.querySelectorAll('.counter-number');
+            
+            counterNumbers.forEach(counter => {
+                const target = parseInt(counter.textContent);
+                let current = 0;
+                const increment = target / 100;
+                const duration = 2000; // 2 segundos
+                const stepTime = duration / 100;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target === Infinity ? '∞' : target;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current);
+                    }
+                }, stepTime);
+            });
+
+            // Efeito de hover nos botões de link
+            const linkButtons = document.querySelectorAll('.link-button');
+            linkButtons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.05)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Sistema de cópia de links (para futura implementação)
+            document.querySelectorAll('.link-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                        
+                        // Efeito visual de clique
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                        }, 150);
+                        
+                        // Feedback visual
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i> Em breve!';
+                        this.style.background = 'var(--success)';
+                        
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                            this.style.background = '';
+                        }, 1500);
+                    }
+                });
+            });
+
+            // Efeito parallax no fundo
+            document.addEventListener('mousemove', (e) => {
+                const bg = document.querySelector('.bg-effects');
+                const x = (e.clientX / window.innerWidth) * 30;
+                const y = (e.clientY / window.innerHeight) * 30;
+                
+                bg.style.backgroundPosition = `${x}% ${y}%`;
+            });
+
+            // Animar elementos do cabeçalho
+            const headerElements = document.querySelectorAll('.page-title, .page-subtitle');
+            headerElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 300);
+            });
+
+            // Animar contadores
+            const counterItems = document.querySelectorAll('.counter-item');
+            counterItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 800 + (index * 200));
+            });
+        });
+
+        // Função para rolagem suave entre projetos
+        function scrollToProject(projectId) {
+            const project = document.getElementById(projectId);
+            if (project) {
+                window.scrollTo({
+                    top: project.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+                
+                // Efeito visual de destaque
+                project.style.boxShadow = '0 0 40px rgba(108, 99, 255, 0.5)';
+                setTimeout(() => {
+                    project.style.boxShadow = '';
+                }, 2000);
+            }
+        }
+
+        // Adicionar IDs de projeto ao histórico (para compartilhamento)
+        if (window.location.hash) {
+            setTimeout(() => {
+                scrollToProject(window.location.hash.substring(1));
+            }, 500);
+        }
+    </script>
+</body>
+</html>

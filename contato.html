@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Stunner System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variáveis CSS */
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --accent: #36D1DC;
+            --success: #4CAF50;
+            --dark: #0F0F23;
+            --darker: #070714;
+            --light: #F5F5FF;
+            --gradient: linear-gradient(135deg, #6C63FF 0%, #36D1DC 100%);
+            --gradient-warm: linear-gradient(135deg, #FF6584 0%, #FF8E53 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Efeitos de Fundo Contacto */
+        .bg-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 15% 85%, rgba(108, 99, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 15%, rgba(54, 209, 220, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 101, 132, 0.1) 0%, transparent 50%);
+        }
+
+        .connection-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .line {
+            position: absolute;
+            background: var(--gradient);
+            transform-origin: left;
+            animation: connect 3s ease-in-out infinite;
+        }
+
+        @keyframes connect {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Navegação */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(108, 99, 255, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 8px 32px rgba(108, 99, 255, 0.3);
+        }
+
+        .logo-text h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            transition: left 0.3s ease;
+            z-index: -1;
+            border-radius: 50px;
+        }
+
+        .nav-link:hover::before {
+            left: 0;
+        }
+
+        .nav-link:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .nav-link.active {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 5px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Cabeçalho da Página */
+        .page-header {
+            padding: 12rem 5% 4rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        /* Seção Principal */
+        .contact-section {
+            padding: 4rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Grid de Contacto */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 6rem;
+        }
+
+        /* Informações de Contacto */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .info-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 35px rgba(108, 99, 255, 0.2);
+        }
+
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            color: var(--light);
+        }
+
+        .info-content {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--accent);
+            text-decoration: none;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(54, 209, 220, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background: rgba(54, 209, 220, 0.2);
+            transform: translateX(5px);
+        }
+
+        /* Mapa de Localização */
+        .location-map {
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(108, 99, 255, 0.1), rgba(54, 209, 220, 0.1));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .map-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Formulário de Contacto */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.6s ease;
+        }
+
+        .contact-form.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .form-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .form-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .form-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .submit-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Redes Sociais */
+        .social-section {
+            text-align: center;
+            padding: 4rem 5%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--light);
+        }
+
+        .social-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            background: rgba(108, 99, 255, 0.1);
+        }
+
+        .social-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .social-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-handle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Mensagem de Agradecimento */
+        .thank-you {
+            text-align: center;
+            padding: 6rem 5%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .thank-you-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .thank-you-text {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Rodapé */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(108, 99, 255, 0.2);
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .back-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .page-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 10rem 5% 3rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .info-card,
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efeitos de Fundo -->
+    <div class="bg-effects"></div>
+    <div class="connection-lines" id="connectionLines"></div>
+
+    <!-- Navegação -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span>S</span>
+                </div>
+                <div class="logo-text">
+                    <h1>Stunner<span>System</span></h1>
+                    <p class="tagline">Onde ideias ganham vida digital</p>
+                </div>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Início</span>
+                </a>
+                <a href="sobre.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Minha Jornada</span>
+                </a>
+                <a href="projetos.html" class="nav-link">
+                    <i class="fas fa-code"></i>
+                    <span>Projetos</span>
+                </a>
+                <a href="tecnologias.html" class="nav-link">
+                    <i class="fas fa-cogs"></i>
+                    <span>Tecnologias</span>
+                </a>
+                <a href="contato.html" class="nav-link active">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contacto</span>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho da Página -->
+    <header class="page-header">
+        <h1 class="page-title">Vamos Conectar!</h1>
+        <p class="page-subtitle">
+            Cada grande colaboração começa com uma conversa. Seja para discutir um projeto, 
+            trocar ideias ou simplesmente dizer olá, estou sempre aberto a novas conexões.
+        </p>
+    </header>
+
+    <!-- Seção Principal -->
+    <main class="contact-section">
+        <div class="contact-grid">
+            <!-- Informações de Contacto -->
+            <div class="contact-info">
+                <div class="info-card" id="emailCard">
+                    <div class="info-header">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="info-title">Email</h3>
+                    </div>
+                    <p class="info-content">
+                        Para questões profissionais, parcerias ou propostas de projeto. 
+                        Respondo normalmente dentro de 24 horas.
+                    </p>
+                    <a href="mailto:benjamim@stunnersystem.com" class="contact-link" id="emailLink">
+                        <i class="fas fa-paper-plane"></i>
+                        benjamim@stunnersystem.com
+                    </a>
+                </div>
+
+                <div class="info-card" id="whatsappCard">
+                    <div class="info-header">
+                        <div class="info-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3 class="info-title">WhatsApp</h3>
+                    </div>
+                    <p class="info-content">
+                        Para conversas mais directas e ágeis. Perfeito para discussões 
+                        técnicas rápidas ou esclarecimentos imediatos.
+                    </p>
+                    <a href="https://wa.me/258XXXXXXXXX" class="contact-link" id="whatsappLink">
+                        <i class="fas fa-comment"></i>
+                        +258 XX XXX XXX
+                    </a>
+                </div>
+
+                <div class="info-card" id="locationCard">
+                    <div class="info-header">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="info-title">Localização</h3>
+                    </div>
+                    <p class="info-content">
+                        Baseado em Morrumbala, Zambézia - mas trabalho remotamente com 
+                        clientes e colaboradores de todo Moçambique e além.
+                    </p>
+                    <div class="location-map">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <p>Morrumbala, Zambézia</p>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Moçambique</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulário de Contacto -->
+            <div class="contact-form" id="contactForm">
+                <div class="form-header">
+                    <h2 class="form-title">Envie uma Mensagem</h2>
+                    <p class="form-subtitle">Preencha o formulário abaixo e retornarei o mais breve possível</p>
+                </div>
+
+                <form id="messageForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name" class="form-label">
+                                <i class="fas fa-user"></i> Seu Nome
+                            </label>
+                            <input type="text" id="name" class="form-input" placeholder="Digite seu nome completo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">
+                                <i class="fas fa-envelope"></i> Seu Email
+                            </label>
+                            <input type="email" id="email" class="form-input" placeholder="exemplo@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject" class="form-label">
+                            <i class="fas fa-tag"></i> Assunto
+                        </label>
+                        <select id="subject" class="form-input" required>
+                            <option value="" disabled selected>Selecione o assunto</option>
+                            <option value="projeto">Proposta de Projeto</option>
+                            <option value="colaboracao">Colaboração</option>
+                            <option value="duvida">Dúvida Técnica</option>
+                            <option value="orçamento">Orçamento</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="form-label">
+                            <i class="fas fa-comment"></i> Mensagem
+                        </label>
+                        <textarea id="message" class="form-textarea" placeholder="Descreva sua ideia, projeto ou dúvida em detalhes..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-paperclip"></i> Anexos (Opcional)
+                        </label>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <input type="file" id="attachment" class="form-input" style="padding: 0.8rem;" accept=".pdf,.doc,.docx,.jpg,.png">
+                            <small style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">
+                                Máx. 5MB (PDF, DOC, JPG, PNG)
+                            </small>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Redes Sociais -->
+        <section class="social-section">
+            <h2 class="social-title">Conecte-se nas Redes</h2>
+            <p class="page-subtitle" style="margin-bottom: 3rem;">
+                Siga-me para acompanhar meus projetos, aprender sobre tecnologia 
+                e participar da comunidade.
+            </p>
+
+            <div class="social-grid">
+                <a href="https://github.com/seu-usuario" class="social-card" target="_blank">
+                    <div class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="social-name">GitHub</div>
+                    <div class="social-handle">@seu-usuario</div>
+                </a>
+
+                <a href="https://linkedin.com/in/seu-usuario" class="social-card" target="_blank">
+                    <div class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="social-name">LinkedIn</div>
+                    <div class="social-handle">Benjamim Paulino</div>
+                </a>
+
+                <a href="https://twitter.com/seu-usuario" class="social-card" target="_blank">
+                    <div class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <div class="social-name">Twitter</div>
+                    <div class="social-handle">@seu_usuario</div>
+                </a>
+
+                <a href="https://facebook.com/seu-usuario" class="social-card" target="_blank">
+                    <div class="social-icon">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <div class="social-name">Facebook</div>
+                    <div class="social-handle">Stunner System</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Mensagem de Agradecimento -->
+        <section class="thank-you">
+            <h2 class="thank-you-title">Por Que Conectar?</h2>
+            <p class="thank-you-text">
+                Acredito que as melhores soluções nascem da colaboração. Se você tem uma 
+                ideia que precisa de vida digital, um problema que precisa de solução 
+                tecnológica, ou simplesmente quer trocar conhecimentos sobre programação 
+                e inovação em Moçambique, esta conversa pode ser o início de algo 
+                extraordinário.
+            </p>
+            <p class="thank-you-text">
+                Não importa se você é um empresário, um desenvolvedor, um estudante 
+                ou apenas alguém curioso sobre tecnologia - sua perspectiva é valiosa 
+                e bem-vinda aqui.
+            </p>
+            
+            <a href="projetos.html" class="back-home">
+                <i class="fas fa-code"></i>
+                Conhecer Meus Projetos
+            </a>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="page-footer">
+        <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 1rem;">
+            "Sozinho vou mais rápido, mas juntos vamos mais longe."
+        </p>
+        <p style="color: rgba(255, 255, 255, 0.4); font-size: 0.9rem;">
+            © 2024 Stunner System by Benjamim Paulino. Todos os direitos reservados.
+        </p>
+    </footer>
+
+    <!-- JavaScript Embarcado -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu Mobile
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                const isVisible = navLinks.style.display === 'flex';
+                navLinks.style.display = isVisible ? 'none' : 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'rgba(15, 15, 35, 0.98)';
+                navLinks.style.backdropFilter = 'blur(10px)';
+                navLinks.style.padding = '2rem';
+                navLinks.style.gap = '1rem';
+                navLinks.style.borderTop = '1px solid rgba(108, 99, 255, 0.2)';
+                navLinks.style.borderBottom = '1px solid rgba(108, 99, 255, 0.2)';
+            });
+
+            // Criar linhas de conexão animadas
+            function createConnectionLines() {
+                const container = document.getElementById('connectionLines');
+                const lineCount = 20;
+                
+                for (let i = 0; i < lineCount; i++) {
+                    const line = document.createElement('div');
+                    line.className = 'line';
+                    
+                    // Posição e tamanho aleatórios
+                    const startX = Math.random() * 100;
+                    const startY = Math.random() * 100;
+                    const length = 50 + Math.random() * 200;
+                    const angle = Math.random() * 360;
+                    
+                    line.style.left = `${startX}%`;
+                    line.style.top = `${startY}%`;
+                    line.style.width = `${length}px`;
+                    line.style.height = '2px';
+                    line.style.transform = `rotate(${angle}deg)`;
+                    line.style.animationDelay = `${Math.random() * 3}s`;
+                    
+                    container.appendChild(line);
+                }
+            }
+
+            createConnectionLines();
+
+            // Animar elementos ao scroll
+            const infoCards = document.querySelectorAll('.info-card');
+            const contactForm = document.querySelector('.contact-form');
+            
+            function animateElements() {
+                // Animar cards de informação
+                infoCards.forEach((card, index) => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (cardTop < windowHeight * 0.85) {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, index * 200);
+                    }
+                });
+
+                // Animar formulário
+                const formTop = contactForm.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (formTop < windowHeight * 0.85) {
+                    contactForm.classList.add('visible');
+                }
+            }
+
+            // Verificar inicialmente
+            animateElements();
+
+            // Verificar ao rolar
+            window.addEventListener('scroll', animateElements);
+
+            // Animar elementos do cabeçalho
+            const headerElements = document.querySelectorAll('.page-title, .page-subtitle');
+            headerElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 300);
+            });
+
+            // Efeito de digitação no subtítulo
+            const subtitle = document.querySelector('.page-subtitle');
+            const originalText = subtitle.textContent;
+            subtitle.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    subtitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 30);
+                }
+            }
+            
+            // Iniciar após carregamento
+            setTimeout(typeWriter, 500);
+
+            // Formulário de contacto
+            const messageForm = document.getElementById('messageForm');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            messageForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validar formulário
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value.trim();
+                
+                if (!name || !email || !subject || !message) {
+                    showNotification('Por favor, preencha todos os campos obrigatórios.', 'error');
+                    return;
+                }
+                
+                if (!validateEmail(email)) {
+                    showNotification('Por favor, insira um email válido.', 'error');
+                    return;
+                }
+                
+                // Desabilitar botão e mostrar loading
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                
+                // Simular envio (substituir por código real)
+                setTimeout(() => {
+                    // Sucesso
+                    showNotification('Mensagem enviada com sucesso! Entrarei em contacto em breve.', 'success');
+                    
+                    // Resetar formulário
+                    messageForm.reset();
+                    
+                    // Reabilitar botão
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Mensagem';
+                    
+                    // Animar confirmação
+                    const thankYouSection = document.querySelector('.thank-you');
+                    thankYouSection.style.animation = 'pulse 1s';
+                    setTimeout(() => {
+                        thankYouSection.style.animation = '';
+                    }, 1000);
+                    
+                }, 2000);
+            });
+
+            // Função de validação de email
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            // Sistema de notificação
+            function showNotification(message, type) {
+                // Remover notificação existente
+                const existingNotification = document.querySelector('.notification');
+                if (existingNotification) {
+                    existingNotification.remove();
+                }
+                
+                // Criar nova notificação
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.innerHTML = `
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                    <span>${message}</span>
+                    <button class="notification-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                
+                // Estilos da notificação
+                notification.style.position = 'fixed';
+                notification.style.top = '100px';
+                notification.style.right = '20px';
+                notification.style.background = type === 'success' ? 'var(--success)' : 'var(--secondary)';
+                notification.style.color = 'white';
+                notification.style.padding = '1rem 1.5rem';
+                notification.style.borderRadius = '10px';
+                notification.style.display = 'flex';
+                notification.style.alignItems = 'center';
+                notification.style.gap = '0.8rem';
+                notification.style.zIndex = '9999';
+                notification.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+                notification.style.animation = 'slideIn 0.3s ease';
+                
+                // Botão de fechar
+                const closeBtn = notification.querySelector('.notification-close');
+                closeBtn.style.background = 'none';
+                closeBtn.style.border = 'none';
+                closeBtn.style.color = 'white';
+                closeBtn.style.cursor = 'pointer';
+                closeBtn.style.marginLeft = '1rem';
+                
+                closeBtn.addEventListener('click', () => {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                });
+                
+                document.body.appendChild(notification);
+                
+                // Remover automaticamente após 5 segundos
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.style.animation = 'slideOut 0.3s ease';
+                        setTimeout(() => notification.remove(), 300);
+                    }
+                }, 5000);
+            }
+
+            // Estilos para animações de notificação
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                }
+                
+                @keyframes slideOut {
+                    from {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                    to {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                }
+                
+                @keyframes pulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.02); }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Copiar email ao clicar
+            const emailLink = document.getElementById('emailLink');
+            emailLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const email = 'benjamim@stunnersystem.com';
+                navigator.clipboard.writeText(email).then(() => {
+                    // Feedback visual
+                    const originalHTML = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check"></i> Email copiado!';
+                    this.style.background = 'var(--success)';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalHTML;
+                        this.style.background = '';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Erro ao copiar email:', err);
+                    showNotification('Erro ao copiar email. Tente manualmente.', 'error');
+                });
+            });
+
+            // Efeito de hover nas cartas sociais
+            const socialCards = document.querySelectorAll('.social-card');
+            socialCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.social-icon i');
+                    icon.style.transform = 'scale(1.2) rotate(5deg)';
+                    icon.style.transition = 'transform 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.social-icon i');
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+
+            // Validação em tempo real
+            const formInputs = document.querySelectorAll('.form-input, .form-textarea');
+            formInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        this.style.borderColor = 'var(--accent)';
+                    } else {
+                        this.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    }
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (!this.value.trim() && this.hasAttribute('required')) {
+                        this.style.borderColor = 'var(--secondary)';
+                    }
+                });
+            });
+
+            // Animação de entrada das redes sociais
+            const socialGrid = document.querySelector('.social-grid');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        const cards = entry.target.querySelectorAll('.social-card');
+                        cards.forEach((card, i) => {
+                            setTimeout(() => {
+                                card.style.opacity = '0';
+                                card.style.transform = 'translateY(20px)';
+                                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                                
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0)';
+                                }, 50);
+                            }, i * 100);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(socialGrid);
+        });
+
+        // Função para compartilhar contacto
+        function shareContact(method) {
+            const contactInfo = {
+                email: 'benjamim@stunnersystem.com',
+                whatsapp: '+258 XX XXX XXX',
+                location: 'Morrumbala, Zambézia, Moçambique'
+            };
+            
+            let text = '';
+            switch(method) {
+                case 'email':
+                    text = `Email do Benjamim Paulino: ${contactInfo.email}`;
+                    break;
+                case 'whatsapp':
+                    text = `WhatsApp do Benjamim: ${contactInfo.whatsapp}`;
+                    break;
+                case 'location':
+                    text = `Localização: ${contactInfo.location}`;
+                    break;
+            }
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Contacto - Benjamim Paulino',
+                    text: text,
+                    url: window.location.href
+                });
+            } else {
+                // Copiar para clipboard como fallback
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('Contacto copiado para a área de transferência!');
+                });
+            }
+        }
+    </script>
+</body>
+</html>

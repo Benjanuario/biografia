@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Jornada | Benjamim Paulino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variáveis CSS */
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --accent: #36D1DC;
+            --dark: #0F0F23;
+            --darker: #070714;
+            --light: #F5F5FF;
+            --gradient: linear-gradient(135deg, #6C63FF 0%, #36D1DC 100%);
+            --gradient-warm: linear-gradient(135deg, #FF6584 0%, #FF8E53 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Efeitos de Fundo */
+        .bg-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(108, 99, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 101, 132, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(54, 209, 220, 0.1) 0%, transparent 50%);
+        }
+
+        /* Navegação (consistente com index.html) */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(15, 15, 35, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(108, 99, 255, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 8px 32px rgba(108, 99, 255, 0.3);
+        }
+
+        .logo-text h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            transition: left 0.3s ease;
+            z-index: -1;
+            border-radius: 50px;
+        }
+
+        .nav-link:hover::before {
+            left: 0;
+        }
+
+        .nav-link:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .nav-link.active {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 5px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Conteúdo Principal */
+        .page-header {
+            padding: 12rem 5% 4rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        /* Linha do Tempo */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 45%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.2);
+        }
+
+        .timeline-year {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .timeline-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 5px 20px rgba(108, 99, 255, 0.4);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-icon {
+            right: -80px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-icon {
+            left: -80px;
+        }
+
+        /* Seção Filosofia */
+        .philosophy {
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-warm);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .philosophy-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 101, 132, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 35px rgba(255, 101, 132, 0.2);
+        }
+
+        .philosophy-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-warm);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .philosophy-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .philosophy-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Citação Inspiradora */
+        .inspiration {
+            text-align: center;
+            padding: 4rem 5%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            position: relative;
+            padding: 0 2rem;
+        }
+
+        .quote::before,
+        .quote::after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .quote::before {
+            top: -20px;
+            left: 0;
+        }
+
+        .quote::after {
+            bottom: -40px;
+            right: 0;
+        }
+
+        .author {
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+        }
+
+        /* Rodapé */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(108, 99, 255, 0.2);
+            margin-top: 4rem;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .back-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: calc(100% - 80px);
+                left: 80px !important;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-icon,
+            .timeline-item:nth-child(even) .timeline-icon {
+                left: -80px;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .timeline-content {
+                padding: 1.5rem;
+            }
+
+            .timeline-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .timeline-item {
+                width: calc(100% - 60px);
+                left: 60px !important;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-icon,
+            .timeline-item:nth-child(even) .timeline-icon {
+                left: -60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efeitos de Fundo -->
+    <div class="bg-effects"></div>
+
+    <!-- Navegação -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span>S</span>
+                </div>
+                <div class="logo-text">
+                    <h1>Stunner<span>System</span></h1>
+                    <p class="tagline">Onde ideias ganham vida digital</p>
+                </div>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Início</span>
+                </a>
+                <a href="sobre.html" class="nav-link active">
+                    <i class="fas fa-user"></i>
+                    <span>Minha Jornada</span>
+                </a>
+                <a href="projetos.html" class="nav-link">
+                    <i class="fas fa-code"></i>
+                    <span>Projetos</span>
+                </a>
+                <a href="tecnologias.html" class="nav-link">
+                    <i class="fas fa-cogs"></i>
+                    <span>Tecnologias</span>
+                </a>
+                <a href="contato.html" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contacto</span>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho da Página -->
+    <header class="page-header">
+        <h1 class="page-title">Minha Jornada</h1>
+        <p class="page-subtitle">
+            De professor em Morrumbala a criador de soluções digitais. Cada passo 
+            foi uma lição, cada desafio uma oportunidade de crescimento.
+        </p>
+    </header>
+
+    <!-- Linha do Tempo -->
+    <section class="timeline">
+        <!-- Item 1 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <span class="timeline-year">1998</span>
+                <h3 class="timeline-title">Nasce um Moçambicano</h3>
+                <p class="timeline-description">
+                    Vim ao mundo em Caia, província de Sofala, com a energia do rio Zambeze 
+                    e a riqueza cultural moçambicana como herança.
+                </p>
+                <div class="timeline-icon">
+                    <i class="fas fa-baby"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <span class="timeline-year">2020</span>
+                <h3 class="timeline-title">O Chamado para Ensinar</h3>
+                <p class="timeline-description">
+                    Iniciei minha jornada como professor em Morrumbala, descobrindo minha 
+                    paixão por compartilhar conhecimento e impactar vidas.
+                </p>
+                <div class="timeline-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <span class="timeline-year">2022</span>
+                <h3 class="timeline-title">Primeiro Encontro com o Código</h3>
+                <p class="timeline-description">
+                    Movido pela necessidade de melhorar minhas aulas, dei meus primeiros 
+                    passos no mundo da programação. HTML, CSS e JavaScript se tornaram 
+                    meus novos alfabetos.
+                </p>
+                <div class="timeline-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <span class="timeline-year">2023</span>
+                <h3 class="timeline-title">Nascimento do Stunner System</h3>
+                <p class="timeline-description">
+                    Fundei o Stunner System como incubadora dos meus projetos. Aqui, 
+                    cada ideia encontra o ambiente perfeito para se tornar realidade.
+                </p>
+                <div class="timeline-description">
+                    Descobri o poder das IAs generativas (ChatGPT, DeepSeek, Claude) como 
+                    mentores 24/7, acelerando meu aprendizado de forma exponencial.
+                </p>
+                <div class="timeline-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <span class="timeline-year">2023</span>
+                <h3 class="timeline-title">Primeiro Grande Projeto: Gerador de Planos</h3>
+                <p class="timeline-description">
+                    Desenvolvi meu primeiro aplicativo completo - uma ferramenta para 
+                    professores gerarem planos de aula e quinzenais. Aprendi na prática 
+                    o significado de "aprender fazendo".
+                </p>
+                <div class="timeline-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <span class="timeline-year">2024</span>
+                <h3 class="timeline-title">Soluções para Problemas Reais</h3>
+                <p class="timeline-description">
+                    Lancei o <strong>Actualizações CFM</strong> resolvendo um problema 
+                    de comunicação dos passageiros, e o <strong>MozaIA</strong> para 
+                    democratizar o conhecimento sobre inteligência artificial em Moçambique.
+                </p>
+                <div class="timeline-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item 7 -->
+        <div class="timeline-item">
+            <div class="timeline-content">
+                <span class="timeline-year">Futuro</span>
+                <h3 class="timeline-title">Próximos Horizontes</h3>
+                <p class="timeline-description">
+                    Domínio de Python, React, e machine learning. Expansão do Stunner 
+                    System para incubar projetos de outros desenvolvedores moçambicanos. 
+                    Contribuir para o ecossistema tech de Moçambique.
+                </p>
+                <div class="timeline-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filosofia -->
+    <section class="philosophy">
+        <h2 class="section-title">Minha Filosofia de Desenvolvimento</h2>
+        <div class="philosophy-grid">
+            <div class="philosophy-card">
+                <div class="philosophy-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Soluções com Alma</h3>
+                <p>
+                    Cada projeto nasce de uma dor real, uma necessidade específica. 
+                    Não crio apenas código - crio experiências que melhoram vidas.
+                </p>
+            </div>
+
+            <div class="philosophy-card">
+                <div class="philosophy-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Aprendizado Contínuo</h3>
+                <p>
+                    Vejo cada linha de código como uma oportunidade de aprendizado. 
+                    As IAs são meus mentores, os bugs são meus professores, e cada 
+                    projeto é uma nova escola.
+                </p>
+            </div>
+
+            <div class="philosophy-card">
+                <div class="philosophy-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3>Tecnologia que Serve</h3>
+                <p>
+                    Acredito que a tecnologia deve ser acessível e útil para todos. 
+                    Meu objetivo é criar ferramentas que empoderem pessoas, 
+                    especialmente na realidade moçambicana.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Citação Inspiradora -->
+    <section class="inspiration">
+        <div class="quote">
+            "O maior código que podemos escrever não está nos computadores, 
+            mas na transformação positiva que causamos na vida das pessoas."
+        </div>
+        <div class="author">— Benjamim Paulino</div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="page-footer">
+        <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 1rem;">
+            Esta jornada é apenas o começo. O melhor ainda está por vir.
+        </p>
+        <a href="index.html" class="back-home">
+            <i class="fas fa-arrow-left"></i>
+            Voltar para o Início
+        </a>
+    </footer>
+
+    <!-- JavaScript Embarcado -->
+    <script>
+        // Menu Mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                const isVisible = navLinks.style.display === 'flex';
+                navLinks.style.display = isVisible ? 'none' : 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'rgba(15, 15, 35, 0.98)';
+                navLinks.style.backdropFilter = 'blur(10px)';
+                navLinks.style.padding = '2rem';
+                navLinks.style.gap = '1rem';
+                navLinks.style.borderTop = '1px solid rgba(108, 99, 255, 0.2)';
+                navLinks.style.borderBottom = '1px solid rgba(108, 99, 255, 0.2)';
+            });
+
+            // Animação da Linha do Tempo
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            function checkScroll() {
+                timelineItems.forEach(item => {
+                    const itemTop = item.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (itemTop < windowHeight * 0.85) {
+                        item.classList.add('visible');
+                    }
+                });
+            }
+
+            // Verificar posição inicial
+            checkScroll();
+
+            // Verificar ao rolar
+            window.addEventListener('scroll', checkScroll);
+
+            // Efeito de digitação no subtítulo
+            const subtitle = document.querySelector('.page-subtitle');
+            const originalText = subtitle.textContent;
+            subtitle.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    subtitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 30);
+                }
+            }
+            
+            // Iniciar animação após carregamento
+            setTimeout(typeWriter, 500);
+
+            // Efeito de hover nas cartas de filosofia
+            const philosophyCards = document.querySelectorAll('.philosophy-card');
+            philosophyCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    const icon = card.querySelector('.philosophy-icon');
+                    icon.style.transform = 'scale(1.1) rotate(5deg)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    const icon = card.querySelector('.philosophy-icon');
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+
+            // Animar elementos na entrada
+            const animateOnScroll = (elements) => {
+                elements.forEach(element => {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(20px)';
+                    
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                                element.style.opacity = '1';
+                                element.style.transform = 'translateY(0)';
+                                observer.unobserve(element);
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    
+                    observer.observe(element);
+                });
+            };
+
+            // Aplicar animação às seções
+            const sections = document.querySelectorAll('.philosophy, .inspiration');
+            animateOnScroll(sections);
+        });
+
+        // Efeito Parallax no fundo
+        document.addEventListener('mousemove', (e) => {
+            const bg = document.querySelector('.bg-effects');
+            const x = (e.clientX / window.innerWidth) * 20;
+            const y = (e.clientY / window.innerHeight) * 20;
+            
+            bg.style.backgroundPosition = `${x}% ${y}%`;
+        });
+    </script>
+</body>
+</html>

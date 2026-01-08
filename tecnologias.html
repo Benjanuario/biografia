@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Stack Tecnológico | Stunner System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    
+    <style>
+        /* Variáveis CSS */
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --accent: #36D1DC;
+            --html: #E34F26;
+            --css: #1572B6;
+            --js: #F7DF1E;
+            --python: #3776AB;
+            --react: #61DAFB;
+            --node: #339933;
+            --firebase: #FFCA28;
+            --github: #181717;
+            --netlify: #00C7B7;
+            --supabase: #3ECF8E;
+            --dark: #0F0F23;
+            --darker: #070714;
+            --light: #F5F5FF;
+            --gradient: linear-gradient(135deg, #6C63FF 0%, #36D1DC 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Efeitos de Fundo Tecnológico */
+        .bg-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(108, 99, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(54, 209, 220, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 90%, rgba(255, 101, 132, 0.1) 0%, transparent 50%);
+        }
+
+        .code-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(108, 99, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(108, 99, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(50px) translateX(50px); }
+        }
+
+        /* Navegação */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(108, 99, 255, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 8px 32px rgba(108, 99, 255, 0.3);
+        }
+
+        .logo-text h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            transition: left 0.3s ease;
+            z-index: -1;
+            border-radius: 50px;
+        }
+
+        .nav-link:hover::before {
+            left: 0;
+        }
+
+        .nav-link:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .nav-link.active {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 5px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Cabeçalho da Página */
+        .page-header {
+            padding: 12rem 5% 4rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        /* Contador de Tecnologias */
+        .tech-counter {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .counter-item {
+            text-align: center;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            min-width: 130px;
+        }
+
+        .counter-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .counter-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Seção Principal */
+        .tech-section {
+            padding: 4rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Categorias de Tecnologias */
+        .category {
+            margin-bottom: 5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .category.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(108, 99, 255, 0.3);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .category-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--light);
+        }
+
+        .category-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Grid de Tecnologias */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tech-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 35px rgba(108, 99, 255, 0.2);
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--tech-color, var(--primary));
+        }
+
+        .tech-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-icon i {
+            color: var(--tech-color, var(--light));
+        }
+
+        .tech-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .tech-level {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            color: var(--tech-color, var(--light));
+        }
+
+        .tech-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .tech-projects {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+        }
+
+        .tech-projects strong {
+            color: var(--tech-color, var(--primary));
+        }
+
+        /* Barras de Progresso */
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--tech-color, var(--primary));
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        /* Seção de IAs Assistivas */
+        .ai-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 1px solid rgba(255, 101, 132, 0.2);
+        }
+
+        .ai-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            text-align: center;
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .ai-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ai-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+            background: rgba(255, 101, 132, 0.05);
+        }
+
+        .ai-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .ai-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .ai-role {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Metodologia de Aprendizado */
+        .methodology {
+            padding: 4rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .methodology-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .methodology-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: white;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--light);
+        }
+
+        .step-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Rodapé */
+        .page-footer {
+            text-align: center;
+            padding: 4rem 5% 3rem;
+            border-top: 1px solid rgba(108, 99, 255, 0.2);
+        }
+
+        .next-page {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .next-page:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .page-title {
+                font-size: 2.8rem;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .category-title {
+                font-size: 1.6rem;
+            }
+            
+            .ai-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .methodology-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 10rem 5% 3rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .ai-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-card {
+                padding: 1.5rem;
+            }
+            
+            .ai-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efeitos de Fundo -->
+    <div class="bg-effects"></div>
+    <div class="code-grid"></div>
+
+    <!-- Navegação -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <span>S</span>
+                </div>
+                <div class="logo-text">
+                    <h1>Stunner<span>System</span></h1>
+                    <p class="tagline">Onde ideias ganham vida digital</p>
+                </div>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Início</span>
+                </a>
+                <a href="sobre.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Minha Jornada</span>
+                </a>
+                <a href="projetos.html" class="nav-link">
+                    <i class="fas fa-code"></i>
+                    <span>Projetos</span>
+                </a>
+                <a href="tecnologias.html" class="nav-link active">
+                    <i class="fas fa-cogs"></i>
+                    <span>Tecnologias</span>
+                </a>
+                <a href="contato.html" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contacto</span>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho da Página -->
+    <header class="page-header">
+        <h1 class="page-title">Meu Arsenal Tecnológico</h1>
+        <p class="page-subtitle">
+            As ferramentas, linguagens e plataformas que uso para transformar ideias 
+            em realidade. Cada tecnologia foi escolhida a dedo para resolver problemas 
+            específicos dos meus projetos.
+        </p>
+        
+        <div class="tech-counter">
+            <div class="counter-item">
+                <span class="counter-number" id="frontendCount">0</span>
+                <span class="counter-label">Frontend</span>
+            </div>
+            <div class="counter-item">
+                <span class="counter-number" id="backendCount">0</span>
+                <span class="counter-label">Backend</span>
+            </div>
+            <div class="counter-item">
+                <span class="counter-number" id="aiCount">0</span>
+                <span class="counter-label">IAs Assistivas</span>
+            </div>
+            <div class="counter-item">
+                <span class="counter-number" id="toolCount">0</span>
+                <span class="counter-label">Ferramentas</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção Principal -->
+    <main class="tech-section">
+        <!-- Frontend -->
+        <section class="category" id="frontend">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <div>
+                    <h2 class="category-title">Frontend & Interface</h2>
+                    <p class="category-subtitle">Criando experiências visuais cativantes e responsivas</p>
+                </div>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-card" style="--tech-color: var(--html)">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="devicon-html5-plain"></i>
+                        </div>
+                        <div>
+                            <h3 class="tech-name">HTML5</h3>
+                            <span class="tech-level">Avançado</span>
+                        </div>
+                    </div>
+                    <p class="tech-description">
+                        Estrutura semântica e acessível para todas as minhas aplicações web.
+                        Domínio completo das tags modernas e boas práticas de SEO.
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="95"></div>
+                    </div>
+                    <p class="tech-projects">Usado em: <strong>Todos os projetos web</strong></p>
+                </div>
+                
+                <div class="tech-card" style="--tech-color: var(--css)">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="devicon-css3-plain"></i>
+                        </div>
+                        <div>
+                            <h3 class="tech-name">CSS3</h3>
+                            <span class="tech-level">Avançado</span>
+                        </div>
+                    </div>
+                    <p class="tech-description">
+                        Estilização avançada com Grid, Flexbox, animações CSS e design responsivo.
+                        Criação de interfaces modernas com efeitos visuais impressionantes.
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="90"></div>
+                    </div>
+                    <p class="tech-projects">Usado em: <strong>Todos os projetos</strong></p>
+                </div>
+                
+                <div class="tech-card" style="--tech-color: var(--js)">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="devicon-javascript-plain"></i>
+                        </div>
+                        <div>
+                            <h3 class="tech-name">JavaScript ES6+</h3>
+                            <span class="tech-level">Intermediário-Avançado</span>
+                        </div>
+                    </div>
+                    <p class="tech-description">
+                        Lógica de frontend, manipulação DOM, fetch API, e funcionalidades 
+                        interativas. Foco em código limpo e eficiente.
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="85"></div>
+                    </div>
+                    <p class="tech-projects">Usado em: <strong>Gerador de Planos, MozaIA</strong></p>
+                </div>
+                
+                <div class="tech-card" style="--tech-color: var(--react)">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="devicon-react-original"></i>
+                        </div>
+                        <div>
+                            <h3 class="tech-name">React</h3>
+                            <span class="tech-level">Em Aprendizado</span>
+                        </div>
+                    </div>
+                    <p class="tech-description">
+                        Componentes reutilizáveis, estados e props. Atualmente expandindo 
+                        meus conhecimentos para criar interfaces mais dinâmicas.
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="40"></div>
+                    </div>
+                    <p class="tech-projects">Usado em: <strong>Futuros projetos</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Backend & Banco de Dados -->
+        <section class="category" id="backend">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <div>
+                    <h2 class="category-title">Backend & Banco de Dados</h2>
+                    <p class="category-subtitle">A lógica por trás da magia - onde os dados ganham vida</p>
+                </div>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-card" style="--tech-color: var(--node)">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="devicon-nodejs-plain"></i>
+                        </div>
+                        <div>
+                            <h3 class="tech-name">Node.js</h3>
+                            <span class="tech-level">Intermediário</span>
+                        </div>
+                    </div>
+                    <p class="tech-description">
+                        Criação de APIs RESTful, autenticação e lógica de servidor para 
+                        aplicações web. Foco em performance e escalabilidade.
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="70"></div>
+                    </div>
+                    <p class="tech-projects">Usado em: <strong>Gerador de Planos</strong></p>
+                </div>
+                
+                <div class="tech-card" style="--tech-color: var(--firebase)">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="devicon-firebase-plain"></i>
+                        </div>
+                        <div>
+                            <h3 class="tech-name">Firebase</h3>
+                            <span class="tech-level">Intermediário</span>
+                        </div>
+                    </div>
+                    <p class="tech-description">
+                        Banco de dados em tempo real, autenticação e hospedagem. 
+                        Solução completa para aplicações que precisam de sincronização instantânea.
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="75"></div>
+                    </div>
+                    <p class="tech-projects">Usado em: <strong>Actualizações CFM</strong></p>
+                </div>
+                
+                <div class="tech-card" style="--tech-color: var(--supabase)">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="devicon-supabase-plain"></i>
+                        </div>
+                        <div>
+                            <h3 class="tech-name">Supabase</h3>
+                            <span class="tech-level">Básico-Intermediário</span>
+                        </div>
+                    </div>
+                    <p class="tech-description">
+                        Backend como serviço com PostgreSQL, autenticação e APIs automáticas. 
+                        Alternativa open source ao Firebase que estou explorando.
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="50"></div>
+                    </div>
+                    <p class="tech-projects">Usado em: <strong>Projetos experimentais</strong></p>
+                </div>
+                
+                <div class="tech-card" style="--tech-color: var(--python)">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="devicon-python-plain"></i>
+                        </div>
+                        <div>
+                            <h3 class="tech-name">Python</h3>
+                            <span class="tech-level">Em Aprendizado</span>
+                        </div>
+                    </div>
+                    <p class="tech-description">
+                        Futuro foco para automação, análise de dados e machine learning. 
+                        Explorando bibliotecas como Pandas, NumPy e TensorFlow.
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="30"></div>
+                    </div>
+                    <p class="tech-projects">Usado em: <strong>Futuros projetos de IA</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- IAs Assistivas -->
+        <section class="ai-section">
+            <h2 class="ai-title">Meus Mentores Digitais - IAs Assistivas</h2>
+            <p class="page-subtitle" style="text-align: center; margin-bottom: 3rem;">
+                Estas inteligências artificiais são meus parceiros de aprendizado 24/7, 
+                ajudando-me a superar desafios e acelerar meu desenvolvimento
+            </p>
+            
+            <div class="ai-grid">
+                <div class="ai-card">
+                    <div class="ai-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <h3 class="ai-name">ChatGPT</h3>
+                    <p class="ai-role">Mentor de Código & Debugging</p>
+                </div>
+                
+                <div class="ai-card">
+                    <div class="ai-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="ai-name">DeepSeek</h3>
+                    <p class="ai-role">Arquitectura de Sistemas</p>
+                </div>
+                
+                <div class="ai-card">
+                    <div class="ai-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="ai-name">Gemini</h3>
+                    <p class="ai-role">Análise de Código & Boas Práticas</p>
+                </div>
+                
+                <div class="ai-card">
+                    <div class="ai-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="ai-name">Claude</h3>
+                    <p class="ai-role">Documentação & Planeamento</p>
+                </div>
+                
+                <div class="ai-card">
+                    <div class="ai-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="ai-name">Grok</h3>
+                    <p class="ai-role">Ideias Criativas & Inovação</p>
+                </div>
+                
+                <div class="ai-card">
+                    <div class="ai-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="ai-name">Qwen</h3>
+                    <p class="ai-role">Otimização & Performance</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ferramentas & Plataformas -->
+        <section class="category" id="tools">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div>
+                    <h2 class="category-title">Ferramentas & Plataformas</h2>
+                    <p class="category-subtitle">O ecossistema que mantém meus projetos no ar e em desenvolvimento</p>
+                </div>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-card" style="--tech-color: var(--github)">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="devicon-github-original"></i>
+                        </div>
+                        <div>
+                            <h3 class="tech-name">GitHub</h3>
+                            <span class="tech-level">Intermediário</span>
+                        </div>
+                    </div>
+                    <p class="tech-description">
+                        Controle de versão, colaboração e hospedagem de código. 
+                        Uso diário para versionar todos os meus projetos.
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="80"></div>
+                    </div>
+                    <p class="tech-projects">Usado em: <strong>Todos os projetos</strong></p>
+                </div>
+                
+                <div class="tech-card" style="--tech-color: var(--netlify)">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="devicon-netlify-plain"></i>
+                        </div>
+                        <div>
+                            <h3 class="tech-name">Netlify</h3>
+                            <span class="tech-level">Intermediário</span>
+                        </div>
+                    </div>
+                    <p class="tech-description">
+                        Hospedagem e deploy contínuo para aplicações web estáticas. 
+                        CI/CD automatizado com preview de branches.
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="75"></div>
+                    </div>
+                    <p class="tech-projects">Usado em: <strong>Portfólio, MozaIA</strong></p>
+                </div>
+                
+                <div class="tech-card" style="--tech-color: #4CAF50">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="tech-name">Google Apps Script</h3>
+                            <span class="tech-level">Intermediário</span>
+                        </div>
+                    </div>
+                    <p class="tech-description">
+                        Automação de fluxos de trabalho, integração com Google Workspace 
+                        e criação de APIs simples para automação.
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="65"></div>
+                    </div>
+                    <p class="tech-projects">Usado em: <strong>Automações internas</strong></p>
+                </div>
+                
+                <div class="tech-card" style="--tech-color: #FF9800">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="tech-name">Acode</h3>
+                            <span class="tech-level">Avançado</span>
+                        </div>
+                    </div>
+                    <p class="tech-description">
+                        Meu editor de código móvel principal. Permite-me programar em 
+                        qualquer lugar diretamente do meu smartphone.
+                    </p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-width="90"></div>
+                    </div>
+                    <p class="tech-projects">Usado em: <strong>Todos os projetos móveis</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metodologia de Aprendizado -->
+        <section class="methodology">
+            <h2 class="methodology-title">Como Aprendo Novas Tecnologias</h2>
+            <div class="methodology-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Identificação da Necessidade</h3>
+                    <p class="step-description">
+                        Escolho tecnologias que resolvem problemas reais dos meus projetos, 
+                        nunca por modismo ou tendências.
+                    </p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Imersão com IAs</h3>
+                    <p class="step-description">
+                        Uso múltiplas IAs assistivas para entender conceitos fundamentais, 
+                        melhores práticas e armadilhas comuns.
+                    </p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Projeto Prático</h3>
+                    <p class="step-description">
+                        Aplico imediatamente em um mini-projeto real. Aprendo fazendo, 
+                        cometendo erros e corrigindo no processo.
+                    </p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Integração no Stack</h3>
+                    <p class="step-description">
+                        Incorporo a nova tecnologia em projetos existentes, observando 
+                        como ela interage com o resto do meu ecossistema.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="page-footer">
+        <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 1rem;">
+            Este stack está em constante evolução. A próxima tecnologia que domino 
+            pode ser a que resolve o seu problema.
+        </p>
+        <a href="contato.html" class="next-page">
+            <i class="fas fa-arrow-right"></i>
+            Vamos Conversar Sobre Tecnologia
+        </a>
+    </footer>
+
+    <!-- JavaScript Embarcado -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu Mobile
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                const isVisible = navLinks.style.display === 'flex';
+                navLinks.style.display = isVisible ? 'none' : 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'rgba(15, 15, 35, 0.98)';
+                navLinks.style.backdropFilter = 'blur(10px)';
+                navLinks.style.padding = '2rem';
+                navLinks.style.gap = '1rem';
+                navLinks.style.borderTop = '1px solid rgba(108, 99, 255, 0.2)';
+                navLinks.style.borderBottom = '1px solid rgba(108, 99, 255, 0.2)';
+            });
+
+            // Contadores animados
+            const counters = {
+                frontend: 4,
+                backend: 4,
+                ai: 6,
+                tools: 4
+            };
+
+            Object.keys(counters).forEach(key => {
+                const counter = document.getElementById(`${key}Count`);
+                if (counter) {
+                    let current = 0;
+                    const target = counters[key];
+                    const increment = target / 50;
+                    const duration = 1500;
+                    const stepTime = duration / 50;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current);
+                        }
+                    }, stepTime);
+                }
+            });
+
+            // Animar barras de progresso
+            function animateProgressBars() {
+                const progressBars = document.querySelectorAll('.progress-fill');
+                progressBars.forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    setTimeout(() => {
+                        bar.style.width = `${width}%`;
+                    }, 300);
+                });
+            }
+
+            // Animar categorias ao scroll
+            const categories = document.querySelectorAll('.category');
+            
+            function animateCategories() {
+                categories.forEach(category => {
+                    const categoryTop = category.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (categoryTop < windowHeight * 0.85) {
+                        category.classList.add('visible');
+                        
+                        // Animar barras de progresso quando a categoria ficar visível
+                        if (!category.hasAttribute('data-animated')) {
+                            animateProgressBars();
+                            category.setAttribute('data-animated', 'true');
+                        }
+                    }
+                });
+            }
+
+            // Verificar inicialmente
+            animateCategories();
+
+            // Verificar ao rolar
+            window.addEventListener('scroll', animateCategories);
+
+            // Efeito de hover nas cartas de tecnologia
+            const techCards = document.querySelectorAll('.tech-card');
+            techCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const color = this.style.getPropertyValue('--tech-color');
+                    this.style.boxShadow = `0 20px 40px ${color}40`;
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '';
+                });
+            });
+
+            // Efeito de digitação no subtítulo
+            const subtitle = document.querySelector('.page-subtitle');
+            const originalText = subtitle.textContent;
+            subtitle.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    subtitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 30);
+                }
+            }
+            
+            // Iniciar após carregamento
+            setTimeout(typeWriter, 500);
+
+            // Animar elementos do cabeçalho
+            const headerElements = document.querySelectorAll('.page-title, .page-subtitle');
+            headerElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 300);
+            });
+
+            // Animar contadores
+            const counterItems = document.querySelectorAll('.counter-item');
+            counterItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 800 + (index * 200));
+            });
+
+            // Efeito parallax no grid de código
+            document.addEventListener('mousemove', (e) => {
+                const grid = document.querySelector('.code-grid');
+                const x = (e.clientX / window.innerWidth) * 10;
+                const y = (e.clientY / window.innerHeight) * 10;
+                
+                grid.style.transform = `translate(${x}px, ${y}px)`;
+            });
+
+            // Sistema de navegação suave entre categorias
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href.includes('#')) {
+                        e.preventDefault();
+                        const targetId = href.split('#')[1];
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+
+        // Função para destacar tecnologia específica
+        function highlightTech(techName) {
+            const techCards = document.querySelectorAll('.tech-card');
+            techCards.forEach(card => {
+                const name = card.querySelector('.tech-name').textContent;
+                if (name.toLowerCase().includes(techName.toLowerCase())) {
+                    card.style.animation = 'pulse 1s 3';
+                    card.style.borderColor = 'var(--accent)';
+                    
+                    setTimeout(() => {
+                        card.style.animation = '';
+                        card.style.borderColor = '';
+                    }, 3000);
+                }
+            });
+        }
+
+        // Adicionar IDs de categoria ao histórico
+        if (window.location.hash) {
+            setTimeout(() => {
+                const targetId = window.location.hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Destacar a categoria
+                    setTimeout(() => {
+                        targetElement.style.boxShadow = '0 0 40px rgba(108, 99, 255, 0.3)';
+                        setTimeout(() => {
+                            targetElement.style.boxShadow = '';
+                        }, 2000);
+                    }, 500);
+                }
+            }, 500);
+        }
+    </script>
+</body>
+</html>
